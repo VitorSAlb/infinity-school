@@ -74,40 +74,30 @@
         </div>
         
 
-        <ul id="listaTarefas">
-            <!-- Aqui as tarefas serão adicionadas dinamicamente -->
-        </ul>
+        <ul id="listaTarefas"></ul>
     </main>
     
 
     <script>
-        // Função para adicionar uma nova tarefa
         function adicionarTarefa() {
-            // Obter o valor da entrada de texto
-            var tarefa = document.getElementById("tarefaInput").value;
+            let tarefa = document.getElementById("tarefaInput").value;
 
-            // Verificar se o campo não está vazio
             if (tarefa === "") {
                 alert("Por favor, digite uma tarefa");
                 return;
             }
 
-            // Criar um novo item de lista
-            var li = document.createElement("li");
+            let li = document.createElement("li");
             li.textContent = `-> ${tarefa}`;
 
-            // Adicionar um botão de remoção à tarefa
-            var botaoRemover = document.createElement("button");
+            let botaoRemover = document.createElement("button");
             botaoRemover.textContent = "Remover";
             botaoRemover.onclick = function() {
                 this.parentNode.remove();
             };
             li.appendChild(botaoRemover);
 
-            // Adicionar a nova tarefa à lista
             document.getElementById("listaTarefas").appendChild(li);
-
-            // Limpar o campo de entrada
             document.getElementById("tarefaInput").value = "";
         }
 
