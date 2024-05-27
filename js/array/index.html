@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Tarefas Domésticas</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            border: 1px solid black;
+            border-radius: 20px;
+            padding: 15px;
+            width: 80%;
+            text-align: center;
+        }
+
+        input {
+            width: 45%;
+        }
+
+        button {
+            width: 45%;
+        }
+
+        div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        li {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid black;
+            border-radius: 20px;
+            padding: 5px;
+            margin: 5px;
+
+            min-width: 50%;
+            width: fit-content;
+            min-height: fit-content;
+            height: fit-content;
+
+            justify-content: start;
+            align-items: center;
+            text-align: justify;
+        }
+
+    </style>
+</head>
+<body>
+
+    <main>
+        <h1>Gerenciador de Tarefas Domésticas</h1>
+    
+        <div>
+            <input type="text" id="tarefaInput" placeholder="Digite uma nova tarefa">
+            <button onclick="adicionarTarefa()">Adicionar Tarefa</button>
+        </div>
+        
+
+        <ul id="listaTarefas">
+            <!-- Aqui as tarefas serão adicionadas dinamicamente -->
+        </ul>
+    </main>
+    
+
+    <script>
+        // Função para adicionar uma nova tarefa
+        function adicionarTarefa() {
+            // Obter o valor da entrada de texto
+            var tarefa = document.getElementById("tarefaInput").value;
+
+            // Verificar se o campo não está vazio
+            if (tarefa === "") {
+                alert("Por favor, digite uma tarefa");
+                return;
+            }
+
+            // Criar um novo item de lista
+            var li = document.createElement("li");
+            li.textContent = `-> ${tarefa}`;
+
+            // Adicionar um botão de remoção à tarefa
+            var botaoRemover = document.createElement("button");
+            botaoRemover.textContent = "Remover";
+            botaoRemover.onclick = function() {
+                this.parentNode.remove();
+            };
+            li.appendChild(botaoRemover);
+
+            // Adicionar a nova tarefa à lista
+            document.getElementById("listaTarefas").appendChild(li);
+
+            // Limpar o campo de entrada
+            document.getElementById("tarefaInput").value = "";
+        }
+
+    </script>
+</body>
+</html>
