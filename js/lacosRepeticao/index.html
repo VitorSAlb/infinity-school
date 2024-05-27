@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let NETotais = parseInt(prompt('Digite o numero totais de estudantes: '));
+        let somaNotas = 0;
+        let contador = 1;
+        let notas = [];
+
+        while(contador <= NETotais) {
+            let nota = parseFloat(prompt(`Digite a nota do aluno ${contador}`));
+            notas.push(nota);
+            somaNotas += nota;
+            contador++
+        }
+
+        let maiorNota = notas[0];
+        let menorNota = notas[0];
+
+        for(let i = 1; i < notas.length; i++) {
+            if(notas[i] > maiorNota) {
+                maiorNota = notas[i]
+            }
+            if(notas[i] < menorNota) {
+                menorNota = notas[i]
+            }
+        }
+
+        let mediaTurma = somaNotas / NETotais;
+
+        console.log(`Média da turma: ${mediaTurma.toFixed(2)}`)
+        console.log(`Maior Nota: ${maiorNota}`)
+        console.log(`Menor Nota: ${menorNota}`)
+    </script>
+</body>
+</html>
