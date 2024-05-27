@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let nome = prompt('Digite o seu nome: ');
+        let peso = parseFloat(prompt('Digite o seu peso: '));
+        let alturaCm = parseInt(prompt('Digite a sua altura em cm: '));
+
+        let alturaM = alturaCm/100;
+
+        let IMC = peso / (alturaM * alturaM);
+
+        let classificacao = '';
+        if (IMC < 16) {
+            classificacao = 'Baixo peso muito grave';
+        } else if (IMC >= 16 && IMC <= 16.99) {
+            classificacao = 'Baixo peso grave';
+        } else if (IMC >= 17 && IMC <= 18.49) {
+            classificacao = 'Baixo peso';
+        } else if (IMC >= 18.50 && IMC <= 24.99) {
+            classificacao = 'Peso normal';
+        } else if (IMC >= 25 && IMC <= 29.99) {
+            classificacao = 'Sobrepeso';
+        } else if (IMC >= 30 && IMC <= 34.99) {
+            classificacao = 'Obesidade grau I';
+        } else if (IMC >= 35 && IMC <= 39.99) {
+            classificacao = 'Obesidade grau II';
+        } else if (IMC >= 40) {
+            classificacao = 'Obesidade grau III';
+        }
+
+        console.log(`Nome: ${nome}`);
+        console.log(`IMC: ${IMC.toFixed(2)}`);
+        console.log(`Classificação: ${classificacao}`);
+
+
+    </script>
+</body>
+</html>
