@@ -72,7 +72,7 @@
             let altura = document.getElementById("altura").value;
 
             if (peso && altura) {
-                altura = altura / 100; // Convertendo altura de cm para metros
+                altura = altura / 100; 
                 const imc = peso / (altura * altura);
                 document.getElementById("resultado").textContent = `Seu IMC é ${imc.toFixed(2)}`;
             } else {
