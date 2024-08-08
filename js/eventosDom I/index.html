@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Unidades de Comprimento</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #302d57;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .converter {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            top: 50%;
+            width: 50%;
+        }
+
+        .converter input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .converter select {
+            width: 50%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        
+        .converter button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .converter button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="converter">
+        <h2>Conversor de Unidades de Comprimento</h2>
+        <input type="number" id="inputValue" placeholder="Digite o valor em metros" />
+        
+        <select id="unitSelect">
+            <option value="yard">Jarda</option>
+            <option value="foot">Pé</option>
+            <option value="inch">Polegada</option>
+            <option value="mile">Milha</option>
+        </select>
+        
+        <button onclick="convert()">Converter</button>
+        
+        <div class="result" id="result"></div>
+    </div>
+
+<script src="converter.js"></script>
+
+</body>
+</html>
