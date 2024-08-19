@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Personagens Históricos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background-color: #2e1056;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            color: #ffffff;
+        }
+        main {
+            background-color: aliceblue;
+            padding: 20px;
+            border-radius: 20px;
+        }
+        #question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        #options {
+            margin: 20px 0;
+        }
+        .option-button {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border: 2px solid #000000;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #000000;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .option-button:hover {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        #statusAnswer {
+            font-size: 20px;
+            margin: 20px 0;
+            color: #000000;
+        }
+        #reload, #restart {
+            display: none;
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border: 2px solid #28a745;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #28a745;
+            transition: background-color 0.3s, color 0.3s;
+            margin: 0 auto;
+        }
+        #reload:hover, #restart:hover {
+            background-color: #28a745;
+            color: #ffffff;
+        }
+        #results {
+            font-size: 22px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz de Personagens Históricos</h1>
+
+    <main>
+        <h2 id="question"></h2>
+
+        <div id="options">
+            <button type="button" class="option-button" id="option0" value="0"></button>
+            <button type="button" class="option-button" id="option1" value="1"></button>
+            <button type="button" class="option-button" id="option2" value="2"></button>
+            <button type="button" class="option-button" id="option3" value="3"></button>
+        </div>
+        
+        <h3 id="statusAnswer"></h3>
+        
+        <button type="button" id="reload">Próxima Pergunta</button>
+        <button type="button" id="restart">Jogar Novamente</button>
+        
+        <div id="results"></div>
+    </main>
+
+    
+    
+    <script>
+        const questions = [
+            'Quem foi que gritou "independência ou morte"?',
+            'Qual é a capital da França?',
+            'Qual é o maior planeta do nosso sistema solar?',
+            'Qual é a atual capital do Brasil?',
+            'Quem foi o primeiro presidente dos Estados Unidos?',
+            'Qual é o nome do rio mais longo do mundo?',
+            'Quem pintou a Mona Lisa?',
+            'Qual é a fórmula química da água?',
+            'Qual foi o ano da queda do Muro de Berlim?',
+            'Quem descobriu a América?',
+            'Qual é o menor país do mundo?',
+            'Qual é a montanha mais alta do mundo?'
+        ];
+        const options = [
+            ["Dom Pedro II", "Tiririca", "Dom Pedro I", "Zacarias"],
+            ["Londres", "Paris", "Berlim", "Madrid"],
+            ["Vênus", "Marte", "Júpiter", "Saturno"],
+            ["Salvador", "Rio de Janeiro", "São Paulo", "Brasília"],
+            ["George Washington", "Abraham Lincoln", "Thomas Jefferson", "John Adams"],
+            ["Amazonas", "Nilo", "Yangtze", "Mississippi"],
+            ["Leonardo da Vinci", "Michelangelo", "Raphael", "Donatello"],
+            ["H2O", "CO2", "NaCl", "O2"],
+            ["1989", "1991", "1985", "1990"],
+            ["Cristóvão Colombo", "Vasco da Gama", "Ferdinando Magalhães", "Pedro Álvares Cabral"],
+            ["Vaticano", "Mônaco", "Nauru", "San Marino"],
+            ["Everest", "Kilimanjaro", "Mont Blanc", "Denali"]
+        ];
+        const correctAnswers = [2, 1, 2, 3, 0, 1, 0, 0, 0, 0, 0, 0];
+
+        let questionsOrder = [...Array(questions.length).keys()];
+        questionsOrder = questionsOrder.sort(() => Math.random() - 0.5);
+        questionsOrder = questionsOrder.slice(0, 4);
+
+        let currentQuestionIndex = 0;
+        let correctCount = 0;
+        let incorrectCount = 0;
+
+        function generateQuestions() {
+            document.getElementById("question").innerText = questions[questionsOrder[currentQuestionIndex]];
+            
+            const optionsContainer = document.querySelectorAll('.option-button');
+            optionsContainer.forEach((button, index) => {
+                button.innerText = options[questionsOrder[currentQuestionIndex]][index];
+            });
+        }
+        
+        function selectButton() {
+            const alternatives = document.querySelectorAll('.option-button');
+        
+            alternatives.forEach(button => {
+                button.addEventListener('click', () => {
+                    const answer = button.value;
+                    checkAnswer(answer);
+                });
+            });
+        }
+
+        function checkAnswer(answer) {
+            answer = parseInt(answer);
+            let statusAnswer = document.getElementById("statusAnswer");
+            if (answer === correctAnswers[questionsOrder[currentQuestionIndex]]) {
+                statusAnswer.style.color = 'green'
+                statusAnswer.innerText = "Acertou!!!";
+                correctCount++;
+            } else {
+                statusAnswer.style.color = 'red'
+                statusAnswer.innerText = `Errou, a resposta correta é ${options[questionsOrder[currentQuestionIndex]][correctAnswers[questionsOrder[currentQuestionIndex]]]}`
+                incorrectCount++;
+            }
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questionsOrder.length) {
+                document.getElementById('reload').style.display = 'block';
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('results').innerText = `Você acertou ${correctCount} de ${questionsOrder.length} perguntas e errou ${incorrectCount}.`;
+            document.getElementById('reload').style.display = 'none';
+            document.getElementById('restart').style.display = 'block';
+        }
+
+        document.getElementById('reload').addEventListener('click', () => {
+            generateQuestions();
+            document.getElementById('statusAnswer').innerText = '';
+            document.getElementById('reload').style.display = 'none';
+        });
+
+        document.getElementById('restart').addEventListener('click', () => {
+            currentQuestionIndex = 0;
+            correctCount = 0;
+            incorrectCount = 0;
+            questionsOrder = [...Array(questions.length).keys()];
+            questionsOrder = questionsOrder.sort(() => Math.random() - 0.5);
+            questionsOrder = questionsOrder.slice(0, 4); 
+            generateQuestions();
+            document.getElementById('statusAnswer').innerText = '';
+            document.getElementById('results').innerText = '';
+            document.getElementById('restart').style.display = 'none';
+            document.getElementById('reload').style.display = 'none';
+        });
+
+        generateQuestions();
+        selectButton();
+    </script>
+</body>
+</html>
