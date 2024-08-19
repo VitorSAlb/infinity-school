@@ -42,7 +42,7 @@ function displayBooks(bookList = books) {
     const bookListElement = document.getElementById('book-list');
     bookListElement.innerHTML = '';
 
-    bookList.forEach(book => {
+    bookList.forEach((book, index) => {
         const card = document.createElement('div');
         card.className = 'book-card';
         card.innerHTML = `
@@ -51,9 +51,35 @@ function displayBooks(bookList = books) {
             <p><strong>Gênero:</strong> ${book.genre}</p>
             <p><strong>Ano de Publicação:</strong> ${book.year}</p>
             <p><strong>Avaliação:</strong> ${book.rating}/5</p>
+            <div class="rating-section">
+                <button onclick="showRatingInput(${index})">Adicionar Nova Avaliação</button>
+                <input type="number" class="rating-input" min="1" max="5" id="rating-${index}" placeholder="Nova Avaliação">
+                <button class="rating-save" onclick="updateRating(${index})">Salvar Avaliação</button>
+            </div>
         `;
         bookListElement.appendChild(card);
     });
+}
+
+function showRatingInput(index) {
+    const ratingInput = document.querySelector(`#rating-${index}`);
+    const ratingSave = document.querySelector(`#rating-${index} + .rating-save`);
+    const addButton = document.querySelector(`.book-card:nth-child(${index + 1}) .rating-section button`);
+
+    addButton.style.display = 'none';
+    ratingInput.style.display = 'inline';
+    ratingSave.style.display = 'inline';
+}
+
+function updateRating(index) {
+    const newRating = parseInt(document.getElementById(`rating-${index}`).value, 10);
+    if (newRating >= 0 && newRating <= 5) {
+        books[index].rating = newRating;
+        saveBooks();
+        displayBooks();
+    } else {
+        alert('Avaliação deve estar entre 0 e 5.');
+    }
 }
 
 function saveBooks() {
