@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    padding: 10px;
+}
+
+h1 {
+    color: #4f4f4f;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.atm-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.atm-section, .balance-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 25vw;
+}
+
+.atm-section {
+    max-width: 400px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    color: #4f4f4f;
+}
+
+select, input {
+    width: 90%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4f4f4f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #3c3c3c;
+}
+
+p#result {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.balance-section {
+    min-width: 150px;
+    text-align: center;
+}
+
+.balance-section h3 {
+    margin: 0 0 10px 0;
+    color: #4f4f4f;
+}
+
+p#balance-display {
+    font-size: 24px;
+    background-color: #e0e0e0;
+    padding: 15px;
+    border-radius: 4px;
+    font-weight: bold;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Caixa Eletrônico</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Simulador de Caixa Eletrônico</h1>
+
+    <section class="atm-container">
+        <div class="atm-section">
+            <label for="operation">Selecione a Operação:</label>
+            <select id="operation">
+                <option value="balance">Consultar Saldo</option>
+                <option value="withdraw">Sacar</option>
+                <option value="deposit">Depositar</option>
+            </select>
+
+            <label for="amount">Valor da Transação (R$):</label>
+            <input type="number" id="amount" placeholder="ex: 100" min="0">
+
+            <button id="execute">Realizar</button>
+
+            <p id="result"></p>
+        </div>
+        
+        <div class="balance-section">
+            <h3>Saldo Atual</h3>
+            <p id="balance-display">---</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
