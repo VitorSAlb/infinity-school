@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a2e;
+    color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    background-color: #162447;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 800px;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .contact-form {
+    background-color: #1f4068;
+    padding: 20px;
+    border-radius: 8px;
+    width: 45%;
+    height: 300px; 
+    overflow: hidden; 
+  }
+  
+  .contact-form h2 {
+    margin-bottom: 15px;
+  }
+  
+  .contact-form input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #e1e1e1;
+    color: #333;
+  }
+  
+  .contact-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #00a8cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .contact-form button:hover {
+    background-color: #00799e;
+  }
+  
+  .contact-list {
+    background-color: #1f4068;
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%;
+    max-height: 600px; 
+    overflow-y: auto; 
+  }
+  
+  .contact-list h2 {
+    margin-bottom: 15px;
+  }
+  
+  .contact-list ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .contact-list li {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  
+  .contact-list li span {
+    display: flex;
+    align-items: center;
+  }
+  
+  .contact-list li .name {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+  }
+  
+  .contact-list li .phone {
+    display: flex;
+    align-items: center;
+  }
+  
+  .contact-list li .phone label {
+    margin-right: 5px;
+    font-weight: bold;
+  }
+  
+  .contact-list li button {
+    padding: 5px 10px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .contact-list li button.edit {
+    background-color: #f0ad4e;
+    color: white;
+  }
+  
+  .contact-list li button.edit:hover {
+    background-color: #ec971f;
+  }
+  
+  .contact-list li button.delete {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .contact-list li button.delete:hover {
+    background-color: #c82333;
+  }
+  
