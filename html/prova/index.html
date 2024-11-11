@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de Responsividade e Cores em CSS</title>
+    <style>
+        /* Definição das variáveis de cor */
+        :root {
+            --cor-fundo: #f0f4f8;
+            --cor-primaria: #3498db;
+            --cor-secundaria: #2ecc71;
+            --cor-texto: #2c3e50;
+            --cor-acento: #e74c3c;
+        }
+
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 2rem;
+            font-size: 1rem; /* 16px */
+        }
+
+        h1 {
+            color: var(--cor-primaria);
+            font-size: 2.5rem; /* 40px */
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.2rem; /* 19.2px */
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .destaque {
+            color: var(--cor-acento);
+            font-weight: bold;
+        }
+
+        /* Media Queries para responsividade */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.5rem;
+                font-size: 0.8rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Uso de unidades flexíveis para espaçamento */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .botao {
+            background-color: var(--cor-secundaria);
+            color: white;
+            padding: 0.8em 1.2em;
+            border: none;
+            border-radius: 0.3em;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .botao:hover {
+            background-color: var(--cor-primaria);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bem-vindo ao Nosso Site</h1>
+        <p>Este é um exemplo de como aplicar <span class="destaque">responsividade</span> e <span class="destaque">cores</span> utilizando CSS. Redimensione a janela do seu navegador para ver as mudanças.</p>
+        <button class="botao">Clique Aqui</button>
+    </div>
+</body>
+</html>
