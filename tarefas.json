@@ -1,0 +1,9 @@
+[
+    {
+        "nome": "lavar",
+        "descricao": "prato",
+        "prioridade": "Alta",
+        "categoria": "limpeza",
+        "concluida": false
+    }
+]
